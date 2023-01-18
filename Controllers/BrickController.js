@@ -14,6 +14,23 @@ const GetBrick = async (req,res)=>{
     }
 }
 
+const GetBrickById = async (req, res) => {
+    const ID = req.params.id
+    try {
+        if(ID){
+            const data = await BrickModel.find({_id: ID});
+            res.send(data);
+        }else{
+            const data = await BrickModel.find();
+            res.send(data);
+        }
+    } catch (error) {
+        console.log(`Error in GetBrickById : ${error}`);
+        res.send({
+            "Message": "Error in GetBrickById : ${error}",
+        })
+    }
+}
 
 
 const PostBrick = async (req, res) => {
@@ -106,4 +123,4 @@ const GetbyTitle = async (req, res) => {
     }
 }
 
-module.exports = {GetBrick,PostBrick,UpdateBrick,DeleteBrick,GetLimit,GetbyTitle}
+module.exports = {GetBrick,PostBrick,UpdateBrick,DeleteBrick,GetLimit,GetbyTitle,GetBrickById}
