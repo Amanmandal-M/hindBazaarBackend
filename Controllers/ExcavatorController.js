@@ -16,6 +16,26 @@ const GetExcavator = async (req,res)=>{
 
 
 
+const GetExcavatorById = async (req, res) => {
+    const ID = req.params.id
+    try {
+        if(ID){
+            const data = await ExcavatorModel.find({_id: ID});
+            res.send(data);
+        }else{
+            const data = await ExcavatorModel.find();
+            res.send(data);
+        }
+    } catch (error) {
+        console.log(`Error in GetExcavatorById : ${error}`);
+        res.send({
+            "Message": "Error in GetExcavatorById : ${error}",
+        })
+    }
+}
+
+
+
 const PostExcavator = async (req, res) => {
     try {
         const Excavator = ExcavatorModel.insertMany(req.body);
@@ -106,4 +126,4 @@ const GetbyTitle = async (req, res) => {
     }
 }
 
-module.exports = {GetExcavator,PostExcavator,UpdateExcavator,DeleteExcavator,GetLimit,GetbyTitle}
+module.exports = {GetExcavator,GetExcavatorById,PostExcavator,UpdateExcavator,DeleteExcavator,GetLimit,GetbyTitle}
