@@ -5,10 +5,10 @@ const { LogModel } = require("../Models/logModel");
 const LogsData = async (req,res,next) => {
     try {
         const data = new LogModel({
-            DateAndTime :` ${new Date().toISOString()}`,
-            Method :` ${req.method}`,
-            URL :` ${req.url}`,
-            IP : ` ${req.ip}`
+            DateAndTime :`${new Date().toISOString()}`,
+            Method :`${req.method}`,
+            URL :`${req.url}`,
+            IP : `${req.ip}`
         })
         await data.save();
         next();
