@@ -7,6 +7,7 @@ require('dotenv').config();
 
 const { connection } = require('./Config/db');
 const { validator } = require('./Middlewares/AuthenticatorMiddleware');
+const { LogsData } = require('./Middlewares/log.middleware');
 const { AdminRouter } = require('./Routes/AdminRoute');
 const { BrickRouter } = require('./Routes/BrickRouter');
 const { ExcavatorRouter } = require('./Routes/ExcavatorRouter');
@@ -22,7 +23,7 @@ app.use(cors());
 app.get('/',(req,res)=>{
     res.send("Welcome in My Project Api")
 })
-
+app.use(LogsData);
 app.use("/products" ,BrickRouter)
 app.use("/products" ,ExcavatorRouter)
 app.use("/users",UserRouter)
