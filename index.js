@@ -20,10 +20,10 @@ const { UserRouter } = require('./Routes/UserRouter');
 
 app.use(express.json());
 app.use(cors());
+app.use(LogsData);
 app.get('/',(req,res)=>{
     res.send("Welcome in My Project Api")
 })
-app.use(LogsData);
 app.use("/products" ,BrickRouter)
 app.use("/products" ,ExcavatorRouter)
 app.use("/users",UserRouter)
