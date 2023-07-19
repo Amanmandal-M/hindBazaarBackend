@@ -22,7 +22,7 @@ app.use(express.json());
 app.use(cors());
 app.use(LogsData);
 app.get('/',(req,res)=>{
-    res.send("Welcome in My Project Api")
+    res.send(<h1 style="text-align:center;color:blue;">Welcome in HindMart Backend</h1>)
 })
 app.use("/products" ,BrickRouter)
 app.use("/products" ,ExcavatorRouter)
